@@ -23,6 +23,7 @@ app.get('/api/v1/foods', function(request, response) {
   //var id = request.params.id
 
   database.raw(`SELECT * FROM foods`)
+  //call Class Food, .all
     .then(function(data) {
       if (!data.rows[0]) {
         response.sendStatus(404)
@@ -32,6 +33,9 @@ app.get('/api/v1/foods', function(request, response) {
     })
 
 })
+
+
+
 
 app.post('/api/v1/foods', function(request, response) {
   //Create food
