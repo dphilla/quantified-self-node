@@ -4,6 +4,8 @@ const database = require('knex')(configuration);              // connect to DB v
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var food = require('./lib/controllers/foods')
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -18,22 +20,19 @@ app.get('/', function(request, response) {
 
 
 //Food REST routes
-app.get('/api/v1/foods', function(request, response) {
-  //all foods
-  //var id = request.params.id
+//app.get('/api/v1/foods', function(request, response) {
 
-  database.raw(`SELECT * FROM foods`)
-  //call Class Food, .all
-    .then(function(data) {
-      if (!data.rows[0]) {
-        response.sendStatus(404)
-      } else {
-        response.json(data.rows)
-      }
-    })
+  //database.raw(`SELECT * FROM foods`)
+    //.then(function(data) {
+      //if (!data.rows[0]) {
+        //response.sendStatus(404)
+      //} else {
+        //response.json(data.rows)
+      //}
+    //})
 
-})
-
+//})
+app.get("/api/v1/foods", food.getFoods)
 
 
 
