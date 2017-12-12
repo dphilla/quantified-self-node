@@ -3,7 +3,7 @@ var app = express()
 
 
 //set the port to an ENV variable OR localhost:3000
-//
+app.set('port', process.env.PORT || 3000)
 
 app.get('/', function(request, response) {
   //landing page with html for documentation
@@ -13,6 +13,17 @@ app.get('/', function(request, response) {
 //Food REST routes
 app.get('/api/v1/foods', function(request, response) {
   //all foods
+  var id = request.params.id
+
+  database.raw(`SELECT * FROM secrets WHERE id = ?`, [id])
+    .then(function(data) {
+      if (!data.rows[0]) {
+        response.sendStatus(404)
+      } else {
+        response.json(data.rows[0])
+      }
+    })
+
 })
 
 app.post('/api/v1/foods', function(request, response) {
