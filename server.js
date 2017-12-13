@@ -26,8 +26,6 @@ app.post('/api/v1/foods', food.postFood)
 
 app.get('/api/v1/foods/:id', food.getSingleFood)
 
-
-
 app.patch('/api/v1/foods/:id', food.updateFood)
 
 
