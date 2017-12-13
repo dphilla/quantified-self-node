@@ -5,6 +5,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var food = require('./lib/controllers/foods')
+var meal = require('./lib/controllers/meals')
 
 
 app.use(bodyParser.json())
@@ -39,9 +40,7 @@ app.delete('/api/v1/foods/:id', function(request, response) {
 
 
 //Meals
-app.get('/api/v1/meals', function(request, response) {
-  //all meals
-})
+app.get('/api/v1/meals', meal.getMeals)
 
 
 //meal-foods
