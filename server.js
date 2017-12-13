@@ -20,18 +20,6 @@ app.get('/', function(request, response) {
 
 
 //Food REST routes
-//app.get('/api/v1/foods', function(request, response) {
-
-  //database.raw(`SELECT * FROM foods`)
-    //.then(function(data) {
-      //if (!data.rows[0]) {
-        //response.sendStatus(404)
-      //} else {
-        //response.json(data.rows)
-      //}
-    //})
-
-//})
 app.get("/api/v1/foods", food.getFoods)
 
 
