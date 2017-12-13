@@ -22,7 +22,7 @@ app.get('/', function(request, response) {
 //Food REST routes
 app.get("/api/v1/foods", food.getFoods)
 
-//app.post('/api/v1/foods', food.postFood)
+app.post('/api/v1/foods', food.postFood)
 
 app.get('/api/v1/foods/:id', food.getSingleFood)
 
