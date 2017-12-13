@@ -28,15 +28,10 @@ app.get('/api/v1/foods/:id', food.getSingleFood)
 
 
 
+app.patch('/api/v1/foods/:id', food.updateFood)
 
 
-app.put('/api/v1/foods/:id', function(request, response) {
-  //update food
-})
 
-//app.patch('/api/v1/foods/:id', function(request, response) {   test the need for both put and patch
-  //update food
-//})
 
 app.delete('/api/v1/foods/:id', function(request, response) {
   //delete food
