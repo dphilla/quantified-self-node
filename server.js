@@ -4,6 +4,8 @@ const database = require('knex')(configuration);              // connect to DB v
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var food = require('./lib/controllers/foods')
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -18,36 +20,18 @@ app.get('/', function(request, response) {
 
 
 //Food REST routes
-app.get('/api/v1/foods', function(request, response) {
-  //all foods
-  //var id = request.params.id
+app.get("/api/v1/foods", food.getFoods)
 
-  database.raw(`SELECT * FROM foods`)
-    .then(function(data) {
-      if (!data.rows[0]) {
-        response.sendStatus(404)
-      } else {
-        response.json(data.rows)
-      }
-    })
+app.post('/api/v1/foods', food.postFood)
 
-})
+app.get('/api/v1/foods/:id', food.getSingleFood)
 
-app.post('/api/v1/foods', function(request, response) {
-  //Create food
-})
 
-app.get('/api/v1/foods/:id', function(request, response) {
-  //show food
-})
 
-app.put('/api/v1/foods/:id', function(request, response) {
-  //update food
-})
+app.patch('/api/v1/foods/:id', food.updateFood)
 
-//app.patch('/api/v1/foods/:id', function(request, response) {   test the need for both put and patch
-  //update food
-//})
+
+
 
 app.delete('/api/v1/foods/:id', function(request, response) {
   //delete food
