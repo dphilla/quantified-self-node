@@ -38,17 +38,12 @@ app.get('/api/v1/meals', meal.getMeals)
 
 
 //meal-foods
-app.get('/api/v1/meals/:meal_id/foods', meal.getMealFood)
+app.get('/api/v1/meals/:meal_id/foods', meal.getMealFoods)
 
-app.get('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
-  //food for meal
-})
 
 app.post('/api/v1/meals/:meal_id/foods/:id', meal.postMealFood)
 
-app.delete('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
-  //delete food for meal
-})
+app.delete('/api/v1/meals/:meal_id/foods/:id', meal.deleteMealFood)
 
 
 if (!module.parent) {
