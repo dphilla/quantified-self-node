@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var food = require('./lib/controllers/foods')
+var meal = require('./lib/controllers/meals')
 
 
 app.use(bodyParser.json())
@@ -33,27 +34,16 @@ app.delete('/api/v1/foods/:id', food.deleteFood)
 
 
 //Meals
-app.get('/api/v1/meals', function(request, response) {
-  //all meals
-})
+app.get('/api/v1/meals', meal.getMeals)
 
 
 //meal-foods
-app.get('/api/v1/meals/:meal_id/foods', function(request, response) {
-  //all foods for meal
-})
+app.get('/api/v1/meals/:meal_id/foods', meal.getMealFoods)
 
-app.get('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
-  //food for meal
-})
 
-app.post('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
-  //create food for meal
-})
+app.post('/api/v1/meals/:meal_id/foods/:id', meal.postMealFood)
 
-app.delete('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
-  //delete food for meal
-})
+app.delete('/api/v1/meals/:meal_id/foods/:id', meal.deleteMealFood)
 
 
 if (!module.parent) {
