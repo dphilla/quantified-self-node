@@ -38,9 +38,7 @@ app.get('/api/v1/meals', meal.getMeals)
 
 
 //meal-foods
-app.get('/api/v1/meals/:meal_id/foods', function(request, response) {
-  //all foods for meal
-})
+app.get('/api/v1/meals/:meal_id/foods', meal.getMealFood)
 
 app.get('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
   //food for meal
