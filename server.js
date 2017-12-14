@@ -44,9 +44,7 @@ app.get('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
   //food for meal
 })
 
-app.post('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
-  //create food for meal
-})
+app.post('/api/v1/meals/:meal_id/foods/:id', meal.postMealFood)
 
 app.delete('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
   //delete food for meal
