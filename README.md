@@ -1,27 +1,39 @@
-# Quantified Self
+<html>
+  <head>
+  </head>
 
-This project is the frontend of a single user calory tracking application built in jQuery and Vanilla JS. The backend can be viewed at https://github.com/emcooper/qs-backend.
+  <body>
+    <p>The following endpoints are available. All endpoints will return the data as JSON.</p>
 
-# To Run the App Locally
-1. Clone this repo
+    <div class="api">
+      <p>Food Endpoints:</p>
+      <ul>
+        <li><code>GET /api/v1/foods</code> - returns all foods currently in the database</li>
 
-2. Change into the `quantified-self` directory
+        <li><code>GET /api/v1/foods/:id</code> - returns the food object with the specific <code>:id</code> you've passed in or 404 if the food is not found</li>
 
-3. Install the dependencies of the starter kit
+        <li><code>POST /api/v1/foods</code> - allows creating a new food with the parameters: <br><code>{ food: { name: "Name of food here", calories: "Calories here"} }</code><br> If food is successfully created, the food item will be returned. If the food is not successfully created, a 400 status code will be returned. Both name and calories are required fields.</li>
 
-  ```shell
-  npm install
-  ```
+        <li><code>PATCH /api/v1/foods/:id</code> - allows one to update an existing food with the parameters:<br> <code>{ food: { name: "Name of food here", calories: "Calories here"} }</code><br> If food is successfully updated (name and calories are required fields), the food item will be returned. If the food is not successfully updated, a 400 status code will be returned.</li>
 
-# Run the Server
+        <li><code>DELETE /api/v1/foods/:id</code> - will delete the food with the id passed in. If the food can't be found, a 404 will be returned.</li>
+      </ul>
+    </div>
 
-```
-npm start
-```
+    <div class="api">
+      <p>Meal Endpoints:</p>
+      <ul>
+        <li><code>GET /api/v1/meals</code> - returns all the meals in the database along with their associated foods</li>
 
-Once the server is running, visit in your browser:
+        <li><code>GET /api/v1/meals/:meal_id/foods</code> - returns all the foods associated with the meal with an id specified by <code>:meal_id</code> or a 404 if the meal is not found</li>
 
-* `http://localhost:8080` to see the meals index page
-* `http://localhost:8080/foods.html` to see the food page
+        <li><code>POST /api/v1/meals/:meal_id/foods/:id</code> - adds the food with <code>:id</code> to the meal with <code>:meal_id</code><br>This creates a new record in the MealFoods table to establish the relationship between this food and meal. If the meal/food cannot be found, a 404 will be returned.
 
+        <li><code>DELETE /api/v1/meals/:meal_id/foods/:id</code> - removes the food with <code>:id</code> from the meal with <code>:meal_id</code><br>This deletes the existing record in the MealFoods table that creates the relationship between this food and meal. If the meal/food cannot be found, a 404 will be returned.
+      </ul>
+    </div>
+  </div>
+</div>
 
+  </body>
+</html>
