@@ -1,4 +1,4 @@
-# The following endpoints are available. All endpoints will return the data as JSON.
+## The following endpoints are available. All endpoints will return the data as JSON.
 
 
   **Food Endpoints**
