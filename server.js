@@ -34,7 +34,7 @@ app.post('/api/v1/foods', food.postFood)
 
 app.get('/api/v1/foods/:id', food.getSingleFood)
 
-app.patch('/api/v1/foods/:id', food.updateFood) // confirm this is working and refactor model method
+app.put('/api/v1/foods/:id', food.updateFood) // confirm this is working and refactor model method
 
 app.delete('/api/v1/foods/:id', food.deleteFood)
 
