@@ -10,7 +10,6 @@ exports.seed = function(knex, Promise) {
     return knex('foods').insert(foods['FOODS']);
   })
   .then(function () {
-    console.log()
     return knex('meals').insert(meals['MEALS']);
   })
 }
