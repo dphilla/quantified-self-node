@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
 return knex('meals').del()
     .then(function () {
       return knex('meals').insert([
-        {name:"Breafast"},
+        {name:"Breakfast"},
         {name: "Snack"},
         {name: "Lunch"},
         {name: "Dinner"}
